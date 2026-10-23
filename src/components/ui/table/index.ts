@@ -1,0 +1,18 @@
+export { default as Table } from './Table.vue'
+export { default as TableHeader } from './TableHeader.vue'
+export { default as TableBody } from './TableBody.vue'
+export { default as TableFooter } from './TableFooter.vue'
+export { default as TableRow } from './TableRow.vue'
+export { default as TableHead } from './TableHead.vue'
+export { default as TableCell } from './TableCell.vue'
+export { default as TableCaption } from './TableCaption.vue'
+
+export { default as STable } from './Table.vue'
+export { default as STableHeader } from './TableHeader.vue'
+export { default as STableBody } from './TableBody.vue'
+export { default as STableFooter } from './TableFooter.vue'
+export { default as STableRow } from './TableRow.vue'
+export { default as STableHead } from './TableHead.vue'
+export { default as STableCell } from './TableCell.vue'
+export { default as STableCaption } from './TableCaption.vue'
+

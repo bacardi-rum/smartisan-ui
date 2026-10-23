@@ -1,0 +1,5 @@
+export { default as Icon } from './Icon.vue'
+export { default as SIcon } from './Icon.vue'
+export { default as IconSprite } from './IconSprite.vue'
+export { default as SIconSprite } from './IconSprite.vue'
+export { injectIconSprite, SMARTISAN_SPRITE_SVG } from './sprite'

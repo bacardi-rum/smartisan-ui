@@ -1,0 +1,27 @@
+<script setup lang="ts">
+import type { HTMLAttributes } from 'vue'
+import { PaginationEllipsis, type PaginationEllipsisProps } from 'reka-ui'
+import { cn } from '@/lib/utils'
+
+interface Props extends PaginationEllipsisProps {
+  class?: HTMLAttributes['class']
+}
+
+const props = defineProps<Props>()
+</script>
+
+<template>
+  <PaginationEllipsis
+    v-bind="props"
+    :class="cn('flex size-8 items-center justify-center text-[#9d9d9d]', props.class)"
+  >
+    <slot>
+      <svg viewBox="0 0 24 24" fill="none" class="size-4 fill-current">
+        <circle cx="12" cy="12" r="1.5" />
+        <circle cx="6" cy="12" r="1.5" />
+        <circle cx="18" cy="12" r="1.5" />
+      </svg>
+    </slot>
+  </PaginationEllipsis>
+</template>
+

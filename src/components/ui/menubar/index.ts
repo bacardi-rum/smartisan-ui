@@ -1,0 +1,16 @@
+export { default as Menubar } from './Menubar.vue'
+export { default as MenubarMenu } from './MenubarMenu.vue'
+export { default as MenubarTrigger } from './MenubarTrigger.vue'
+export { default as MenubarContent } from './MenubarContent.vue'
+export { default as MenubarItem } from './MenubarItem.vue'
+export { default as MenubarGroup } from './MenubarGroup.vue'
+export { default as MenubarSeparator } from './MenubarSeparator.vue'
+
+export { default as SMenubar } from './Menubar.vue'
+export { default as SMenubarMenu } from './MenubarMenu.vue'
+export { default as SMenubarTrigger } from './MenubarTrigger.vue'
+export { default as SMenubarContent } from './MenubarContent.vue'
+export { default as SMenubarItem } from './MenubarItem.vue'
+export { default as SMenubarGroup } from './MenubarGroup.vue'
+export { default as SMenubarSeparator } from './MenubarSeparator.vue'
+
