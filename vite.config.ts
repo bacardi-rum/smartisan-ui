@@ -22,10 +22,12 @@ export default defineConfig(({ command, mode }) => {
         name: 'copy-style-css',
         closeBundle() {
           const outDir = path.resolve(import.meta.dirname, 'dist')
-          const cssFile = path.resolve(outDir, 'smartisan-ui.css')
-          const styleFile = path.resolve(outDir, 'style.css')
-          if (fs.existsSync(cssFile) && !fs.existsSync(styleFile)) {
-            fs.copyFileSync(cssFile, styleFile)
+          const files = fs.readdirSync(outDir)
+          const cssFile = files.find(f => f.endsWith('.css') && f !== 'style.css')
+          if (cssFile) {
+            const src = path.resolve(outDir, cssFile)
+            fs.copyFileSync(src, path.resolve(outDir, 'style.css'))
+            fs.copyFileSync(src, path.resolve(outDir, 'smartisan-ui.css'))
           }
         },
       },

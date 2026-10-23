@@ -14,9 +14,10 @@ const forwarded = useForwardProps(props)
 <template>
   <StepperItem
     v-bind="forwarded"
-    :class="cn('group flex items-center gap-2 cursor-pointer', props.class)"
+    :class="cn('group flex items-center gap-3 flex-1 last:flex-none cursor-pointer', props.class)"
   >
     <slot />
   </StepperItem>
 </template>
+
 

@@ -1,45 +1,23 @@
 <script setup lang="ts">
-import { computed, type HTMLAttributes } from 'vue'
-import {
-  injectStepperItemContext,
-  injectStepperRootContext,
-  type StepperSeparatorProps,
-} from 'reka-ui'
+import type { HTMLAttributes } from 'vue'
+import { StepperSeparator, type StepperSeparatorProps, useForwardProps } from 'reka-ui'
 import { cn } from '@/lib/utils'
 
-interface Props extends /* @vue-ignore */ StepperSeparatorProps {
+interface Props extends StepperSeparatorProps {
   class?: HTMLAttributes['class']
-  step?: number
 }
 
 const props = defineProps<Props>()
-
-const rootContext = injectStepperRootContext(null)
-const itemContext = injectStepperItemContext(null)
-
-const state = computed(() => {
-  if (itemContext?.state?.value) {
-    return itemContext.state.value
-  }
-  if (props.step !== undefined && rootContext?.modelValue?.value !== undefined) {
-    if (rootContext.modelValue.value > props.step) return 'completed'
-    if (rootContext.modelValue.value === props.step) return 'active'
-    return 'inactive'
-  }
-  return 'inactive'
-})
-
-const orientation = computed(() => props.orientation ?? rootContext?.orientation?.value ?? 'horizontal')
+const forwarded = useForwardProps(props)
 </script>
 
 <template>
-  <div
-    role="separator"
-    :data-state="state"
-    :data-orientation="orientation"
+  <StepperSeparator
+    v-bind="forwarded"
     :class="cn(
-      'h-[1px] flex-1 bg-[#e2e2e2] transition-colors group-data-[state=completed]:bg-[#79ad31] data-[state=completed]:bg-[#79ad31]',
+      'h-[2px] flex-1 min-w-[20px] bg-[#e6e6e6] shadow-[inset_0_1px_1px_rgba(0,0,0,0.06)] rounded-full transition-colors group-data-[state=completed]:bg-[#79ad31] mx-2',
       props.class
     )"
   />
 </template>
+

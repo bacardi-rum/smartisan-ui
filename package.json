@@ -1,6 +1,6 @@
 {
-  "name": "smartisan-ui",
-  "version": "0.1.0",
+  "name": "smartisan-ui-vue",
+  "version": "1.0.0",
   "description": "Smartisan OS (锤子科技 / 坚果手机) 拟物风格 Vue 3 组件库，基于 Reka UI 与 Tailwind CSS v4 构建。",
   "keywords": [
     "smartisan",

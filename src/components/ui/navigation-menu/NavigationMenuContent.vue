@@ -21,11 +21,10 @@ const forwarded = useForwardPropsEmits(props, emits)
   <NavigationMenuContent
     v-bind="forwarded"
     :class="cn(
-      'left-0 top-0 w-full p-3 md:absolute md:w-auto data-[motion=from-end]:slide-in-from-right-52 data-[motion=from-start]:slide-in-from-left-52 data-[motion=to-end]:slide-out-to-right-52 data-[motion=to-start]:slide-out-to-left-52',
+      'left-0 top-0 w-max min-w-max p-3 md:absolute',
       props.class
     )"
   >
     <slot />
   </NavigationMenuContent>
 </template>
-

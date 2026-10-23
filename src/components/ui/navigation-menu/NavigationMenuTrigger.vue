@@ -27,7 +27,7 @@ const forwarded = useForwardProps(props)
     <svg
       viewBox="0 0 24 24"
       fill="none"
-      class="relative top-[1px] ml-1 size-3.5 stroke-[#b2b2b2] stroke-2 transition duration-200 group-data-[state=open]:rotate-180"
+      class="relative top-[1px] ml-1 size-3.5 stroke-current stroke-2 opacity-60 transition duration-200 group-data-[state=open]:rotate-180"
     >
       <path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round" />
     </svg>

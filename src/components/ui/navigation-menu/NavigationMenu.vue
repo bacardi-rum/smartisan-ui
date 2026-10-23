@@ -21,14 +21,13 @@ const forwarded = useForwardPropsEmits(props, emits)
 <template>
   <NavigationMenuRoot
     v-bind="forwarded"
-    :class="cn('relative z-10 flex max-w-max flex-1 items-center justify-center', props.class)"
+    :class="cn('relative z-30 flex max-w-max flex-1 items-center justify-center', props.class)"
   >
     <slot />
     <div class="absolute left-0 top-full flex justify-center">
       <NavigationMenuViewport
-        class="origin-top-center relative mt-1.5 h-[var(--reka-navigation-menu-viewport-height)] w-full overflow-hidden rounded-[8px] border border-[#e2e2e2] bg-white text-[#333333] shadow-[0_8px_20px_rgba(0,0,0,0.10)] transition-all data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 md:w-[var(--reka-navigation-menu-viewport-width)]"
+        class="origin-top-center relative mt-2 h-[var(--reka-navigation-menu-viewport-height)] w-[var(--reka-navigation-menu-viewport-width)] min-w-[320px] overflow-hidden rounded-[8px] border border-[#d8d8d8] bg-white text-[#333333] shadow-[0_12px_32px_rgba(0,0,0,0.18)] transition-all data-[state=open]:animate-popup-in data-[state=closed]:animate-popup-out"
       />
     </div>
   </NavigationMenuRoot>
 </template>
-

@@ -13,9 +13,10 @@ const props = defineProps<Props>()
 <template>
   <StepperDescription
     v-bind="props"
-    :class="cn('text-[12px] text-[#9d9d9d]', props.class)"
+    :class="cn('text-[11px] text-[#9d9d9d] whitespace-nowrap', props.class)"
   >
     <slot />
   </StepperDescription>
 </template>
+
 

@@ -1,33 +1,32 @@
 <script setup lang="ts">
-import { provide, ref, type HTMLAttributes } from 'vue'
+import type { HTMLAttributes } from 'vue'
+import {
+  SplitterGroup,
+  type SplitterGroupEmits,
+  type SplitterGroupProps,
+  useForwardPropsEmits,
+} from 'reka-ui'
 import { cn } from '@/lib/utils'
 
-interface Props {
-  direction?: 'horizontal' | 'vertical'
+interface Props extends SplitterGroupProps {
   class?: HTMLAttributes['class']
 }
 
-const props = withDefaults(defineProps<Props>(), {
-  direction: 'horizontal',
-})
-
-const splitPos = ref(50) // percentage
-
-provide('resizable', {
-  direction: props.direction,
-  splitPos,
-})
+const props = defineProps<Props>()
+const emits = defineEmits<SplitterGroupEmits>()
+const forwarded = useForwardPropsEmits(props, emits)
 </script>
 
 <template>
-  <div
+  <SplitterGroup
+    v-bind="forwarded"
     :class="cn(
-      'flex size-full overflow-hidden rounded-[8px] border border-[#e2e2e2] bg-white',
-      direction === 'vertical' ? 'flex-col' : 'flex-row',
+      'flex size-full data-[panel-group-direction=vertical]:flex-col overflow-hidden rounded-[8px] border border-[#e2e2e2] bg-white shadow-sm',
       props.class
     )"
   >
     <slot />
-  </div>
+  </SplitterGroup>
 </template>
+
 

@@ -1,11 +1,13 @@
 <script setup lang="ts">
-import { onMounted, ref, type HTMLAttributes } from 'vue'
+import { computed, nextTick, onMounted, ref, type HTMLAttributes } from 'vue'
 import { cn } from '@/lib/utils'
 
 interface Props {
   loop?: boolean
   items?: (string | number)[]
+  options?: (string | number)[]
   modelValue?: string | number
+  label?: string
   class?: HTMLAttributes['class']
 }
 
@@ -21,16 +23,32 @@ const emit = defineEmits<{
 
 const colRef = ref<HTMLElement | null>(null)
 
-onMounted(() => {
-  if (colRef.value) {
-    if (typeof (window as any).Smartisan !== 'undefined') {
-      (window as any).Smartisan.init(colRef.value.parentElement || document)
-    }
-    colRef.value.addEventListener('change', (ev: any) => {
-      emit('update:modelValue', ev.detail.value)
-      emit('change', ev)
-    })
+const list = computed(() => {
+  if (props.options && props.options.length > 0) return props.options
+  return props.items
+})
+
+function initCol() {
+  if (!colRef.value) return
+  const Smartisan = (window as any).Smartisan
+  if (Smartisan && typeof Smartisan.init === 'function') {
+    delete (colRef.value as any)._wheel
+    Smartisan.init(colRef.value.parentElement || document)
   }
+}
+
+onMounted(() => {
+  nextTick(() => {
+    requestAnimationFrame(() => {
+      initCol()
+      if (colRef.value) {
+        colRef.value.addEventListener('change', (ev: any) => {
+          emit('update:modelValue', ev.detail.value)
+          emit('change', ev)
+        })
+      }
+    })
+  })
 })
 </script>
 
@@ -43,13 +61,14 @@ onMounted(() => {
   >
     <slot>
       <span
-        v-for="item in items"
+        v-for="item in list"
         :key="item"
         :aria-selected="String(item) === String(modelValue) ? 'true' : undefined"
       >
-        {{ item }}
+        {{ item }}{{ label ? ' ' + label : '' }}
       </span>
     </slot>
   </div>
 </template>
+
 
